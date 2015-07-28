@@ -60,7 +60,7 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+            return $this->render('loginOAuth2');
         } else {
             return $this->render('login', [
                 'model' => $model,
@@ -93,4 +93,16 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+
+    public function actionDashboard()
+    {
+        return $this->render('dashboard');
+    }
+
+    public function actionloginOAuth2()
+    {
+        $model = new OAuth2login();
+        return $this->render('loginOAuth2');
+    }
+    
 }
